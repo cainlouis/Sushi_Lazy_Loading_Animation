@@ -13,7 +13,7 @@ pages:
     - apk add --no-cache tree git
     - mkdir public
     - chmod +x markdown_tools/tools/*.sh
-    - markdown_tools/tools/md_to_html.sh -m .pubhtml_manifest -d public
+    - bash -x markdown_tools/tools/md_to_html.sh -m .pubhtml_manifest -d public
 #    - for i in $(ls lectures/scripts/*/*); do tools/code_to_html.sh -i $i -d public; done
     - find public -type d -exec tree {} -H '.' -T "$CI_PROJECT_TITLE" -P "*.html" -I "index.html" --noreport --charset utf-8 -o {}/index.html \;
   artifacts:
