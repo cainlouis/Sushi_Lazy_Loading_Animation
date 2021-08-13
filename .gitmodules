@@ -1,0 +1,3 @@
+[submodule "markdown_tools"]
+	path = markdown_tools
+	url =  https://gitlab.com/mfrydr/markdown_tools.git
