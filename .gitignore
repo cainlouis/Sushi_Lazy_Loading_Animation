@@ -1,0 +1,11 @@
+admin/
+resources/
+temp/
+published_content/
+private_content/
+.commitmessage
+
+*.tmp
+*.bak
+*.swp
+
