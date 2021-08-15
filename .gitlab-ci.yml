@@ -1,3 +1,6 @@
+# Use md_to_html.sh to convert the md files listed in .pubhtml_manifest
+# to HTML for publication using GitLab Pages. 
+
 image: 
   name: pandoc/core
   # Override default entry point.
