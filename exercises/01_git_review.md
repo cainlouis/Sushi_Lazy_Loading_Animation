@@ -199,7 +199,7 @@ when you (and your teammates, if any) are happy with the work.
   it to open a __Merge Request__ in the GitLab Web UI.
 
 Next week, when Assignment 1 is released, we will review the 
-[Protected Branch Workflow]([Protected Branch Workflow](https://gitlab.com/dawsoncollege/520JS/2021-08/all/git-tutorials/-/blob/master/protected_branch_workflow.md)) 
+[Protected Branch Workflow](https://gitlab.com/dawsoncollege/520JS/2021-08/all/git-tutorials/-/blob/master/protected_branch_workflow.md) 
 in more detail, but you can read about it early if you like.
 
 # Git Review
