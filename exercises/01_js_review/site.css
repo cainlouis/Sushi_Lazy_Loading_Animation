@@ -1,0 +1,36 @@
+#image {
+  background: url(./labradoodle.png);
+  z-index: -1;
+  display: grid;
+  grid-template-columns: repeat(10, 0fr);
+  grid-template-rows: repeat(10, 0fr);
+  grid-gap: 1px;
+  margin: 15px;
+}
+
+.blue {
+  background: cornflowerblue;
+}
+
+.red {
+  background: crimson;
+}
+
+.white {
+  background: palegoldenrod;
+}
+
+.cleared {
+  opacity: 0;
+}
+
+.container div {
+  width: 18px;
+  height: 18px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
