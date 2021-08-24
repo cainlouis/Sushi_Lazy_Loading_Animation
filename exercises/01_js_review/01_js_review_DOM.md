@@ -55,4 +55,8 @@ Edit the `script.js` file such that:
     declare them a winner or a loser!
     *   Every time the page is loaded, the _checked_ state of the radio buttons 
         should be reset.
-      
+
+When you're done, push your branch to `origin`, but _do NOT_ merge it into `main`. 
+We recommend that you keep `main` clean so that it matches what the teachers 
+publish. Over the course of the semester, you will accumulate many new branches 
+for your ungraded exercises

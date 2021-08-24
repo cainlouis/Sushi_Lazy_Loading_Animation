@@ -136,7 +136,9 @@ solution), you will __push to a branch on origin__.
 
     * Go to <https://gitlab.com/dawsoncollege/520JS/2021-08/520-study> and copy
       the __Clone__ URL.
-    * Then paste the URL into the following command on the terminal
+    * Then paste the URL into the following command on the terminal.
+      __Note__: in the steps below, I'm using the URL for SSH, but you might 
+      want to choose _HTTPS_ instead depending on your personal setup.
 
     ```
     $ git remote add upstream git@gitlab.com:dawsoncollege/520JS/2021-08/520-study.git
