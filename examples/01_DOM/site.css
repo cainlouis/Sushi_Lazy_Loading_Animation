@@ -1,0 +1,23 @@
+body {
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+
+.section01 {
+    border: 2px solid blue;
+}
+
+.section02 {
+    border: 2px solid red;
+}
+
+.hidden {
+    display: none;
+}
+
+div {
+    border: 2px dashed lightgray;
+    padding: 15px;
+    margin: 5px;
+}
