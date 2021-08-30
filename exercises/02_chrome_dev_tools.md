@@ -109,18 +109,19 @@ which is used in this [Udacity course](https://classroom.udacity.com/courses/ud8
 
 Jump to answer[^url]
 
-[^url]: `https://udacity.github.io/news-aggregator/scripts/data.js`
+[^url]: `https://hacker-news.firebaseio.com/v0/item/28347141.json`
 
 
 2. uncheck the `Any XHR or fetch` breakpoint, and press the play button to resume the script.
 
-3. Go to the network tab. Yikes! Set throtlling at Slow 3G and refresh the page.
+3. Go to the network tab. Yikes! Set throtlling at Slow 3G, disable cache, and refresh the page.
 
 *How long did it take for the first document to complete download? How much time was spent waiting for the first byte (TTFB)?*
 
 Jump to answer[^ttfb]
 
-[^ttfb]: Time column show download time (When I ran it, it took 2.03 s). Hover over the waterfall bar for TTFB (also 2.03 s)
+[^ttfb]: Time column shows download time (When I ran it, `news-aggregator` took 2.03 s). Hover over the waterfall bar for TTFB (also 2.03 s) (or click on news-aggregator and then the Timing tab). If you
+don't see `news-aggregator` anywhere, make sure "All" is selected at the top with the filters.
 
 *How long for DOMContentLoaded and Load events?*
 
@@ -128,7 +129,8 @@ Jump to answer[^events]
 
 [^events]: Found at the bottom of network tab, 7.09 s and 9.20 s respectively is what I got
 
-*What resource type is downloaded using HTTP/1.1?*
+*What resource type is downloaded using HTTP/1.1?* (Right-click on the table 
+columns and check Protocol if you don't see it.)
 
 Jump to answer[^http]
 
@@ -138,19 +140,19 @@ Jump to answer[^http]
 
 Jump to answer[^xhr]
 
-[^xhr]: Array of numbers
+[^xhr]: Array of numbers. To see this, click on an XHR line in the table, then Response tab.
 
-4. Go to the Lighthouse tab, and generate a report for Performace on Mobile.
+4. Go to the Lighthouse tab, and generate a report for Performace on Mobile. Clear Store and Simulated Throttling should be checked. Note that you may get different results depending on the size/dimensions of the browser window (a.k.a the viewport). 
 
 *Which metrics are problematic?*
 
 Jump to answer[^metrics]
 
-[^metrics]: Time to interactive, Speed index, and Largest contentful paint
+[^metrics]: Time to interactive, Speed index, and Largest contentful paint (your results may differ)
 
-5. Since our site is performing so poorly, go to the Performance tab to get more insight. Click the reload button in the dev tool so start recording, and stop after about 2 seconds (clear and try again if you don't have enough data). Use you mouse wheel and/or wasd buttons to zoom in/out and pan. 
+5. Since our site is performing so poorly, go to the Performance tab to get more insight. Screenshots should be checked. Click the reload button (or hit Ctrl+Shift+E) in the dev tool to start recording, and stop after about 5 seconds (clear and try again if you don't have enough data). Use you mouse wheel and/or wasd buttons to zoom in/out and pan. 
 
-*Find an area in the timeline where frames were dropped. What was going on in the main thread at that time?*
+*Find an area in the timeline where frames were dropped (red in FPS). What was going on in the main thread at that time?*
 
 Jump to answer[^busy]
 
