@@ -1,10 +1,14 @@
 # exercises
  exercises/01_git_review.md
  exercises/01_js_review/01_js_review_DOM.md
+ exercises/02_js_fetch/02_js_fetch.md
+ exercises/02_dev_tools.md
 
 # lectures 
 lectures/01_js_review.md
 lectures/01_intro_motivation.md
+lectures/02_js_async_review.md
+lectures/02_promise_review.md
 
 # readings
 preparation/01_prep_rendering.md

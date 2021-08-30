@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Stop Propagation</title>
+<style>
+    * {border: solid 1px; padding: 5px; margin: 5px;}
+    body, html, #wrapper { height: 80%;}
+    div {
+      width:100px;
+      height: 100px;
+      float:left;
+      text-align:center;
+      font-size: 2em;
+      font-style: sans-serif;
+      background-color:white;
+    }
+</style>
+<script>
+"use strict";
+// keep track of number of clicks in each child div
+const counters = {};
+
+function changeBackground(event) {
+  let colorValue = Math.floor(255 * (event.pageX / document.body.clientWidth));
+  console.log("colorValue: " + colorValue);
+  document.body.style.backgroundColor =
+    "rgb(" + [colorValue, colorValue, colorValue].join(",") + ")";
+}
+
+function increment(event) {
+  // Think about event progagation: bubbling and capturing
+  // Uncomment the line below and compare the behaviour of `increment`
+  // and `changeBackground` event handlers.
+  // event.stopPropagation();
+  if (event.target.id !== "wrapper") {
+    counters[event.target.id] += 1;
+    event.target.textContent = counters[event.target.id];
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const wrapper = document.getElementById("wrapper");
+  // insert ten divs into DOM
+  for(let i = 0; i < 10; i++) {
+    const div = document.createElement("div");
+    div.id = "box" + i;
+    wrapper.appendChild(div);
+    counters[div.id] = 0;
+  }
+
+  // event delegaton: notice that we are not attaching handlers to every 
+  // div individually
+  wrapper.addEventListener("click", increment);
+  document.body.addEventListener("click", changeBackground);
+});
+</script>
+</head>
+<body>
+<p>Click on the different boxes, including big, nested ones. How is the
+  background colour chosen?
+</p>
+<section id="wrapper"></section>
+</body>
+</html>

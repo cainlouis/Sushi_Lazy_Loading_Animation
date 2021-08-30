@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Trivia Game</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hidden {
+      visibility: hidden;
+    }
+    .visible {
+      visibility: visible;
+    }
+    .error {
+      color: red;
+      font-size: smaller;  
+      font-style: italic;    
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <h1>Trivia game</h1>
+    <h2>Questions from the Open Trivia Database (opentb.com)</h2>
+    <section id="question">
+
+    </section>
+    <section id="answers">
+
+    </section>
+    <h3 id="result"></h3>
+    <p class="error"></p>
+    <button type="button" class="hidden">Play again?</button>
+
+  </main>
+</body>
+
+</html>
