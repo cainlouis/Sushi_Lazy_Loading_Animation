@@ -1,17 +1,22 @@
-# Use md_to_html.sh to convert the md files listed in .pubhtml_manifest
-# to HTML for publication using GitLab Pages. 
-
-image: 
-  name: pandoc/core
-  # Override default entry point.
-  # The GitLab runner expects that the image has no entrypoint 
-  # or that the entrypoint is prepared to start a shell command. 
-  entrypoint: [""]
-
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
+lint:
+  image: node
+  before_script:
+    - npm install -g eslint
+  script:
+    - eslint --ext .js .
+
+# Use md_to_html.sh to convert the md files listed in .pubhtml_manifest
+# to HTML for publication using GitLab Pages. 
 pages:
+  image: 
+    name: pandoc/core
+    # Override default entry point.
+    # The GitLab runner expects that the image has no entrypoint 
+    # or that the entrypoint is prepared to start a shell command. 
+    entrypoint: [""]
   script:
     - apk add --no-cache tree git bash
     - mkdir public
