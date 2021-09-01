@@ -10,27 +10,37 @@ revealjs-url: revealjs
   ol li {
     list-style-type: lower-alpha
   } 
+  .present p, .present li {
+    text-align: left;
+  }
 </style>
 
-## How the Browser works
-
-* Network communication setup:
-  * Mobile handshake, TCP handshake
-  * DNS look-up
-  * TLS negotiation
+## How the Browser Works
 
 ---
 
-* HTTP GET Request sent
+### Navigation
+
+* HTTP GET Request sent 
+  * e.g. HTTP GET `http://blah.com/index.html`
+* Network communication setup:
+  * Mobile handshake, TCP handshake
+  * DNS look-up (`blah.com`)
+  * TLS negotiation (if HTTPS)
+
+---
+
 * HTTP GET Response received
   * message header has important information, such as the content-type
-  * message body contains the html file
-  * Time to first byte measures time until first packet received
+  * message body contains the html source code of `index.html`
+  * _Time to first byte_ (TTFB) measures time until first packet received
   * the response may need multiple TCP packets
-  * TCP slow start - first response packet is 14kb
+  * _TCP slow start_ - first response packet is 14kb
     * each subsequent packet is doubled until reach threshold/congestion
 
-## Critical Rendering Path
+---
+
+### Critical Rendering Path
 
 As soon as the first packet of the HTML file is received, the browser starts parsing the HTML, and building the DOM. 
 
@@ -48,11 +58,15 @@ Some resource requests are blocking = HTML parsing stops while the response is h
 
 :::
 
-## DOM
+---
+
+### DOM
 
 ![picture of DOM](img/2-DOM.png) [source](https://medium.com/jspoint/how-the-browser-renders-a-web-page-dom-cssom-and-rendering-df10531c9969)
 
-## DOM and CSSOM
+---
+
+### DOM and CSSOM
 
 Once the DOM is complete (i.e., html parsed), the CSSOM is constructed. 
 
@@ -68,11 +82,15 @@ More specific rules (i.e., `section div.warning`) are less performant when creat
 
 The more selectors, the longer to traverse the DOM to create the CSSOM.
 
-## CSSOM
+---
+
+### CSSOM
 
 ![picture of CSSOM](img/2-CSSOM.png) [source](https://medium.com/jspoint/how-the-browser-renders-a-web-page-dom-cssom-and-rendering-df10531c9969)
 
-## JavaScript compilation
+---
+
+### JavaScript compilation
 
 While CSS is being parsed, JavaScript is interpreted and compiled. 
 
@@ -80,7 +98,9 @@ Yes, JavaScript is compiled!
 
 For faster code execution, byte code is used; compilation is done by the browser's JavaScript engine (e.g., `V8` in Chrome, `SpiderMonkey` in Firefox)
 
-## Style Computation
+---
+
+### Style Computation
 
 Once CSSOM is ready, the DOM and CSSOM are combined into the Render Tree, or Computed Style tree, for all visible content (e.g., no head, no nodes with style `display:none`).
 
@@ -90,7 +110,9 @@ Once CSSOM is ready, the DOM and CSSOM are combined into the Render Tree, or Com
 
 Updating the Render Tree, or Style, has to be done every time an element is added to the DOM, or styles of an element are changed by JavaScript.
 
-## Layout
+--- 
+
+### Layout
 
 Layout is placing the nodes based on the screen size and resolution. The Layout step determines the positioning of nodes with respect to the viewport based on their height, width and other geometry. 
 
@@ -110,13 +132,17 @@ Repeated **Layout** recalculations during animations can cause *jank* (under 60F
 
 *Reflow* refers to the Layout, Paint and Composite steps being repeated.
 
-## Paint and Composite
+---
+
+### Paint and Composite
 
 The **Paint** step paints the pixels. Initially, the entire screen is painted, but after that only impacted areas are repainted. 
 
 **Compositing** ensures that the layers are drawn in the correct order.
 
-## Match the following
+---
+
+### Match the following
 
 Indicate if these cause Layout to be redone or not.
 
@@ -127,7 +153,9 @@ Indicate if these cause Layout to be redone or not.
 5. Change the style of an element to `visibility:hidden`
 6. Change a rule from `p { width: 500px }` to `section .someclass { width: 500px }`
 
-## Answers
+---
+
+#### Answers
 
 1. yes, layout needs to be redone since an element is removed from the document layout
 2. yes, the advertising header will move everything below, causing layout to be recalculated. If the banner moves in and out in an animation, it will cause reflow and may result in jank.
@@ -135,6 +163,8 @@ Indicate if these cause Layout to be redone or not.
 4. yes, the width impacts the space taken by the node
 5. `visibility` shows or hides an element without changing the layout, so the layout step is not done
 6. Layout will be redone - the CSSOM changed so Layout will be redone
+
+---
 
 ## Reflow
 
@@ -188,9 +218,61 @@ https://binaryville.com
 
 * Performance tab
 
+---
+
 ## Google's Core Web Vitals
 
-* Largest Contentful Paint (LCP)
-* First Input Delay (FID) 
-* Cumulative Layout Shift (CLS)
+Attempt to estimate _user perception_ of performance.
 
+
+::: notes
+
+* metrics like the timing of `load` or `DOMContentLoaded` don't necessarily 
+  correspond to what the user sees on their screen.
+
+:::
+
+---
+
+* Largest Contentful Paint ([LCP](https://web.dev/lcp/#what-is-lcp)) < 2.5s
+  * render time of the largest image or text block visible within the viewport
+
+::: notes
+
+* LCP is an estimate of user-centric _perceived_ load speed
+  * "because it marks the point in the page load timeline when the page's 
+    main content has likely loaded—a fast LCP helps reassure the user that 
+    the page is useful."
+
+:::
+
+---
+
+* First Input Delay ([FID](https://web.dev/fid/)) < 100ms
+  * the time from when a user first interacts with a page (i.e. when they click a link)  
+    when the browser is actually able to begin processing event handlers
+
+::: notes
+
+* FID is an estimate of your user's impression of your site's interactivity 
+  and responsiveness.
+
+
+:::
+
+---
+
+* Cumulative Layout Shift ([CLS](https://web.dev/cls/#what-is-cls)), the lower the better
+  * how often users see _unexpected_ layout shifts
+
+::: notes
+
+* CLS: "Note that layout shifts only occur when existing elements change 
+their _start_ position"
+  * A layout shift is only bad if the user isn't expecting it (it's not triggered
+  by user interaction)
+  * "Unexpected movement of page content usually happens because resources are 
+  loaded asynchronously or DOM elements get dynamically added to the page 
+  above existing content. The culprit might be an image or video with unknown dimensions,..."
+
+:::
