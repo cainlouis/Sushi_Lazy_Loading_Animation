@@ -125,16 +125,33 @@ Your report should contain a summary of what you learned about the performance o
 ```
 # Performance of SinglePageApp
 
-## Introduction
+## Introduction and Methodology
+
+<!-- Briefly state how you manually tested the app, and in what environment 
+(which browsers, what browser versions, what kind of device, OS,
+width and height of viewport as reported in the console with `window.screen) -->
 
 ## Areas to Improve
 
-## Summary of Improvements
+### Functionality
+
+<!-- What you notice from manual testing: what works, what is broken? -->
+
+### Network
+
+#### No Throttling
+
+#### Slow 3G
+
+## Summary of Changes
 
 ## Results and Conclusion
+
 ```
 
 ## Get to know the application
+
+__Before you begin, take note of your testing environment (see report template above).__
 
 Open the application that is in `assessment/02_assignment1/SinglePageApp` through VSCode's LiveServer. Play around with it, trying out the links. Are there error messages on the console? Note any issues that you notice. 
 
@@ -151,6 +168,10 @@ Now clear the Network tab (the no-entry icon near the top left), throttle for a 
 3. Use Chrome Devtools Performance panel. This tool may be sloooow, so check Diasbale JavaScript samples but keep the Screenshots checked. Keep network and CPU at no throttling. Click on the reload icon to start profiling and reload the page; then go to the page and scroll down, then return to Dev Tool to end the profile. This will take around a few seconds.
 
 Move your mouse from left-to-right over the screenshots: did you capture your scrolling? If not clear this profile (the no-entry icon) and restart.
+
+__Save the profile (Down Arrow) in json format and it to your git branch in the same directory
+as your report__. If you need to pause your work, you can re-open this json file in the Performance
+panel at a later time.
 
 Are there where frames are dropped? Is you CPU running at close to 100%? If so, zoom in on these areas. What are the activities on the main thread? Explain why you think the CPU is maxed out?
 
