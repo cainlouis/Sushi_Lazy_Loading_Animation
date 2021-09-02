@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+    This app is not very good! It works, but not well. Do not use this in
+    production!
+    Card originally from https://onaircode.com/html-css-card-layout-examples/
+    Modifications made:
+    - different images, different text, added JS and changed CSS
+    Images from pexels.com
+    Description animation based on ideas in https://github.com/udacity/news-aggregator
+-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="scripts/index.js"></script>
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+
+<body>
+    <main id='main'>
+        <img src='' alt='Dawson' id='banner' />
+        <header class='bar'>
+            <h1>Dawson College Computer Science Technology</h1>
+            <h2>all about our courses</h2>
+        </header>
+        <section class='info'>
+            <p>The Computer Science Technology Program is a three-year technical program that prepares students to work as entry-level software developers. A software developer, both individually and as a member of a team, conceives, designs and tests the
+                logic for solving problems with a program. They write, test, debug, deploy and maintain the software applications. </p>
+
+            <p>
+                Some examples of jobs Computer Science Technology Program graduates fill in industry are:
+                <ul>
+                    <li>Full-stack Web programming</li>
+                    <li>Mobile device programming</li>
+                    <li>Database programming</li>
+                    <li>Quality assurance specialist</li>
+                    <li>Software support specialist</li>
+                </ul>
+            </p>
+        </section>
+        <section class='card-header'>
+            <h3 id='total-courses-info'></h3>
+            <select name='sort_order'>
+                <option value='semester'> Semester </option>
+                <option value='number'> Course Number </option>
+                <option value='name'> Name </option>
+            </select>
+        </section>
+        <section class="card-container">
+
+        </section>
+    </main>
+</body>
+
+</html>
