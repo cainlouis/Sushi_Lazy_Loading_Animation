@@ -114,19 +114,39 @@ The answer is **a**.
 
 Any animation that is not being drawn at 60 FPS risks looking like it is stuttering or skipping - basically janky! 
 
+![Jank](img/pagejank2.png)
+
+---
+
 There is no VIP treatment in the message queue to get to the front, and the system doesn't treat the setInterval message differently that any other message. 
 
 Reaction to user actions may be noticeably delayed when the browser page is too busy (since the message queue is not being emptied), but this is all happening on the browser. The server is unaware of any issues.
+
+::: notes
+
+Image source: [Inside look at modern browser](https://developers.google.com/web/updates/2018/09/inside-browser-part3)
+
+:::
 
 ## requestAnimationFrame
 
 `requestAnimationFrame` is a bit like `setTimeout`. It specifies the callback that is called once *before* the browser paints, and as such it does not take a time interval argument, and is only scheduled once.
 
+---
+
 The paint happens at the device's display frame rate.
+
+![Timing of rAF](img/raf.png)
 
 ::: notes
 
 Here is an [example](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Drawing_graphics#a_simple_drawing_application) of `requestAnimationFrame` in action!
+
+Note: ⚠ Blindly replacing `setTimeout` and `setInterval` with `requestAnimationFrame`
+won't make your code more performant. You still have to be smart about what code
+you schedule with `requestAnimationFrame`: for example querying for size and 
+position information in `requestAnimationFrame()` has a high probability of
+causing a synchronous reflow. More about this later.
 
 :::
 ---

@@ -76,11 +76,21 @@ The CSSOM *cannot* be constructed incrementally, because styles can overwrite ea
 
 CSS is render-blocking: nothing is rendered until *all* the CSS is parsed and the CSSOM is complete. 
 
+::: notes
+
+"The CSS object model gets built as the CSS is parsed, but can't be used to build the render tree until it is completely parsed because styles that are going to be overwritten with later parsing should not be rendered to the screen." [source](https://developer.mozilla.org/en-US/docs/Web/Performance/Critical_rendering_path)
+
+:::
+
 ---
 
 More specific rules (i.e., `section div.warning`) are less performant when creating the CSSOM than less specific (`section`).
 
 The more selectors, the longer to traverse the DOM to create the CSSOM.
+
+::: notes
+
+"The more specific rule is more expensive because it has to traverse more nodes in the DOM tree - but that extra expense is generally minimal. Measure first. Optimize as needed. Specificity is likely not your low hanging fruit. When it comes to CSS, selector performance optimization, improvements will only be in microseconds. There are other ways to optimize CSS, such as minification, and separating deferred CSS into non-blocking requests by using media queries." [source](https://developer.mozilla.org/en-US/docs/Web/Performance/Critical_rendering_path)
 
 ---
 
@@ -128,9 +138,12 @@ The more nodes that move, the longer it takes.
 
 ---
 
-Repeated **Layout** recalculations during animations can cause *jank* (under 60FPS responsiveness). 
+Excessive **Layout** recalculations during animations can cause *jank* (under 60FPS responsiveness). 
 
 *Reflow* refers to the Layout, Paint and Composite steps being repeated.
+
+JavaScript can trigger extra reflow on top of what's done by the browser once
+per frame: __forced synchronous reflow__. Bad!
 
 ---
 
