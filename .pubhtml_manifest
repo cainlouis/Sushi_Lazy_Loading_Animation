@@ -6,6 +6,7 @@ assessment/02_assignment1/A1Spec.md
  exercises/01_js_review/01_js_review_DOM.md
  exercises/02_js_fetch/02_js_fetch.md
  exercises/02_chrome_dev_tools.md
+ exercises/03_async_await.md
 
 # lectures 
 lectures/01_js_review.md
@@ -13,7 +14,11 @@ lectures/01_intro_motivation.md
 lectures/02_js_async_review.md
 lectures/02_promise_review.md
 lectures/02_CRP_measurements.md
+lectures/03_async_await.md
+lectures/03_closuresIIFE.md
+lectures/03_forced_synchronous_layout.md
 
 # readings
 preparation/01_prep_rendering.md
 preparation/02_prep_IIFE_closure_reflow.md
+preparation/03_bottlenecks_metrics.md
