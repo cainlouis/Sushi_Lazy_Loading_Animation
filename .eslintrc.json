@@ -6,7 +6,12 @@
 
   "env": {
     "browser": true,     // browser global variables.
+    "node": true,
     "es6": true
+  },
+
+  "parserOptions": {
+      "ecmaVersion": 8
   },
 
   "rules": {
