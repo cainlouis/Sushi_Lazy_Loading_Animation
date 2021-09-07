@@ -18,7 +18,7 @@ Here are the tools that you will need to install at home to match the set up tha
   * add extension `MongoDB`
 * install gitbash: https://git-scm.com/download/win 
 * install Node.js: https://nodejs.org/en/download/
-* Once node is installed, the rest is installed using the Node Package Manager npm through gitlab:
+* Once node is installed, the rest is installed using the Node Package Manager npm through gitbash:
   * `npm install express-generator -g`
   * `npm install eslint -g`
   * `npm install -g minifier html-minify`
