@@ -22,3 +22,6 @@ lectures/03_forced_synchronous_layout.md
 preparation/01_prep_rendering.md
 preparation/02_prep_IIFE_closure_reflow.md
 preparation/03_bottlenecks_metrics.md
+
+# examples
+examples/00_homeSetup.md
