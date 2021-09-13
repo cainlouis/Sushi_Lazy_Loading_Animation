@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>Synchronous blocking reflow JavaScript example</title>
+  <style>
+    .cat {
+      border: 1px solid rgb(0,0,255);
+    }
+    #container {
+      width: 400px;
+      height: 400px;
+      position: relative;
+    }
+    #image{
+      width: 50px;
+      height: 50px;
+      position: absolute; 
+    }
+  </style>
+  <script src="script.js" defer></script>
+  </head>
+  <body>
+    <p><button class="cat">Click me for a cat</button></p>
+    <section id="container">
+    <img id="image" alt="cat" src="https://cataas.com/cat/5fb91f6134669a00175311d4">
+  </section>
+</body></html>

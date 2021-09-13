@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- Inspired by Niall Crosby 
+  (https://medium.com/ag-grid/javascript-gpu-animation-with-transform-and-translate-bf09c7000aa6)-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Animation 1 - Changing top</title>
+<style>
+.row {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  transition: top 0.5s;
+}
+.cell {
+  display: block;
+  height: 25px;
+  width: 50px;
+  padding: 2px;
+  border: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#container {
+  position: absolute;
+}
+
+</style>
+<script>
+let rows = [];
+const COUNT = 50;
+const WIDTH = 40;
+const HEIGHT = 25;
+let colours = ["#FFFFFF","#FFFAFA","#F0FFF0","#F5FFFA","#F0FFFF",
+    "#F0F8FF","#F8F8FF","#F5F5F5","#FFF5EE","#F5F5DC","#FDF5E6",
+    "#FFFAF0","#FFFFF0","#FAEBD7","#FAF0E6","#FFF0F5","#FFE4E1"
+];
+
+window.addEventListener('load', function() {
+  setupGrid();
+  document.querySelector("#shuffle").addEventListener("click", function() {
+    rows.reverse();
+    rows.forEach( function(row, index) {
+      row.style.top = (index * HEIGHT) + 'px';
+    });
+  });
+});
+function setupGrid(){
+  let container = document.querySelector('#container');
+
+  for (let rowIndex = 0; rowIndex<COUNT; rowIndex++) {
+    let row = document.createElement('div');
+    row.classList.add('row');
+    row.style.top = (rowIndex * HEIGHT) + 'px';
+    row.style.backgroundColor = colours[rowIndex % colours.length];
+    container.appendChild(row);
+    for (let colIndex = 0; colIndex<10; colIndex++) {
+        let cell = document.createElement('div');
+        cell.style.top = row.style.top;
+        cell.classList.add('cell');
+        cell.textContent = Math.floor(Math.random()*100).toLocaleString();
+        row.appendChild(cell);
+    }
+    rows.push(row);
+  }
+}
+
+</script>
+</head>
+<body>
+  <button id="shuffle">
+    Reverse Rows
+  </button>
+  <div id="container"></div>
+</body>
+</html>
