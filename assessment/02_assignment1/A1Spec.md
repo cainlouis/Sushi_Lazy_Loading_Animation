@@ -169,7 +169,7 @@ Now clear the Network tab (the no-entry icon near the top left), throttle for a 
 
 Move your mouse from left-to-right over the screenshots: did you capture your scrolling? If not clear this profile (the no-entry icon) and restart.
 
-__Save the profile (Down Arrow) in json format and it to your git branch in the same directory
+__Save the profile (Down Arrow) in json format and add it to your git branch in the same directory
 as your report__. If you need to pause your work, you can re-open this json file in the Performance
 panel at a later time.
 
@@ -194,6 +194,12 @@ Two ways that you can improve performance on an image-heavy site is to resize an
 * at home and the labs, install [sharp-cli](https://www.npmjs.com/package/sharp-cli): in the command line terminal (GitBash), run `npm install --global sharp-cli`
 * in the appropriate directory, in the command line run `sharp resize 640 --optimize -i ./images-orig/*.jpg -o ./images `
   You will see that your `images` folder contains much smaller images!
+
+**ERRATUM**
+__NOTE__ If you are in the lab and get an error `bash: sharp: command not found`, the command was not added correctly to your path and you may have to run the command as follows (looking at where sharp was installed):
+`C:\\Users\\YOURSTUDENTID\\AppData\\Roaming\\npm\\sharp resize 640 --optimize -i ./images-orig/*.jpg -o ./images `
+__NB__ replace _YOURSTUDENTID_ and ensure you escape the slashes
+
 
 * Run the Lighthouse report again and note any changes in your report.
 
