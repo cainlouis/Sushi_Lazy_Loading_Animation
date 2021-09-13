@@ -319,7 +319,8 @@ let basketModule = (function () {
 ## Example: loop index
 Consider the [code](https://javascript.plainenglish.io/4-practical-use-cases-for-iifes-in-javascript-6481dcb0ba7d):
 ```js
-for (let i = 0; i < 3; i++) {
+let i;
+for (i = 0; i < 3; i++) {
   setTimeout( () => console.log(`${i}`), 100);
 }
 ```
@@ -331,12 +332,20 @@ What is the result (on separate lines)?
 4. 1 2 3
 5. I don't know
 
-## IIFE in loop index
+## Loop index 2
 ```js
 for (let i = 0; i < 3; i++) {
+  setTimeout( () => console.log(`${i}`), 100);
+}
+```
+
+## Loop index with IIFE
+```js
+let i;
+for (i = 0; i < 3; i++) {
   (function(index) {
     setTimeout( () => console.log(`${index}`), 100);
-  })(i);
+   })(i);
 }
 ```
 
@@ -351,6 +360,7 @@ for (let i = 0; i < 3; i++) {
 ```
 Benefits:
 
+- Use with `await` with top-level code
 - no need to have a named `async` function
 - define and immediately execute an `async` function
 - useful if you have additional data to load on DOMContentLoaded, and need to use the `await` operator
