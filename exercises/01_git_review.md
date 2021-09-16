@@ -89,7 +89,9 @@ solutions to individual graded work.
 
 ![Add teachers as Maintainers](assets/gitlab-members-screenshot.png){ width=100% }
 
-3.  Now you will __clone your fork__. Using a terminal like _git-bash_, 
+3. Click on __Settings__ > ___Pages__ on the left, then __Remove Pages__. This will ensure that your personal work is not published to the web.
+
+4.  Now you will __clone your fork__. Using a terminal like _git-bash_, 
     go to your H:drive (`cd /h`)
 
     * Create a directory for 520
