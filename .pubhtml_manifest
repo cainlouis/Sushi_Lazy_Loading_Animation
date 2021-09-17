@@ -1,5 +1,7 @@
 #assessment
 assessment/02_assignment1/A1Spec.md
+assessment/04_assignment2/A2Spec.md
+assessment/04_test1_parameters.md
 
 # exercises
  exercises/01_git_review.md
@@ -21,12 +23,14 @@ lectures/03_closuresIIFE.md
 lectures/03_forced_synchronous_layout.md
 lectures/04_Optimizing_CRP.md
 lectures/04_RAIL_model.md
+lectures/04_quiz_questions.md
 
 # readings
 preparation/01_prep_rendering.md
 preparation/02_prep_IIFE_closure_reflow.md
 preparation/03_bottlenecks_metrics.md
 preparation/04_optimize_loading_modules.md
+preparation/05_server_side_js.md
 
 # examples
 examples/00_homeSetup.md
