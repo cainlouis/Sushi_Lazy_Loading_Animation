@@ -16,12 +16,14 @@ _Read all the assignment instructions before you begin_.
 # Goals
 
 In this assignment, you will write a website demonstrates some of the client-side performance techniques learned so far:
+
 1. use the Fetch API
 2. lazy load images using the Intersection Observer API
 3. create an animation using `requestAnimationFrame` (rAF)
 
 # References
 Images from:
+
 * banner image: https://www.aliexpress.com
 * temporary placeholder sushi: https://www.choicemarthawaii.com/
 * image to animate: freepik.com
@@ -126,7 +128,12 @@ Once the DOMContent is loaded, you will be making JavaScript Fetch requests to f
 * lazy load the images using the Intersection Observer API. You don't need to set any options since the defaults are fine. Have one observer observing the `#nigiri` section and another for `#maki`. The callback will change the `src` of all the `img`s in that section to the value of the `data-src` attribute only if the `src` still `endsWith("assets/sushi.webp")` ([endsWith](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith) is a JS string function)
 * **Optional for individual projects, required for partner projects**: For smooth scrolling of the navbar links, add event listeners to the click event and use [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) with behaviour `smooth`
 
-### Tip
+
+## Functionality of the website - Animation
+
+In the animation section: lift up and down the image by 2px every paint cycle (i.e., using `requestAnimationFrame`s), going up and down by a maximum of 100px. Try to avoid work on the main thread as far as possible. The animation never ends!
+
+## Tip
 
 Code features incrementally: first start with the fetch requests, then loading all of one section upon DOMContentLoaded. When you are confident that it works, refactor the code for both sections, trying to reuse as much code as possible. Next, add the IntersectionObserver.
 
@@ -135,9 +142,6 @@ The two big benefits of coding features incrementally is that:
 1. you will at least have a functional website even if you cannot complete everything
 2. it is easier to debug when you can focus only on 1 feature and fewer lines of code at a time.
 
-## Functionality of the website - Animation
-
-In the animation section: lift up and down the image by 2px every paint cycle (i.e., using `requestAnimationFrame`s), going up and down by a maximum of 100px. Try to avoid work on the main thread as far as possible. The animation never ends!
 
 # Submission
 
