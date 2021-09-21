@@ -38,15 +38,17 @@ Images from:
 Send me a Slack DM with the name of your partner by Sept 21st. No partners allowed after that date.
 
 If you are working with a partner, one partner will:
-* create a new fork of <https://gitlab.com/dawsoncollege/520JS/2021-08/520-study>
-  * Change the name of the fork to `520-study-A2-Name1-Name2`, where `Name1` and `Name2` are the last names of the teammates
-    * The namespace should be your personal account (the default)
-    * The visibility will be __private__ because the original `520-study` repo
-      is private.
-* click on __Project Information__ on the left, then __Members__ 
+* create a new project on GitLab in your personal account using the GitLab Web UI (Menu > Projects > Create new project > Create blank project).
+* Name it `520-study-A2-Name1-Name2`, where `Name1` and `Name2` are the last names of the teammates and keep its visibility as *private*. **Uncheck** "Initialize repository with a README"
+* Create the project, and copy its cloning URL
+* using Gitbash, `git clone https://gitlab.com/dawsoncollege/520JS/2021-08/520-study.git` to a local copy (NOTE: you are cloning 520-web, **not** the repo that you just made)
+* `cd 520-study` in GitBash, then `git remote set-url origin URL_TO_YOUR_NEW_GITLAB`
+* `git remote -v` to make sure you are no longer connected to the official 520-study
+* `git push origin main`
+* Your new repository is now an unattached copy of the official 520-study.
+* In GitLab, click on __Project Information__ on the left, then __Members__ 
    You need to add your partner **and** your 520 teacher as Maintainers so we have access to
    the private repository.
-
   * Add `j-nila` and your partner with role __Maintainer__ and click __Invite__
 * Use the Protected Branch Workflow in `520-study-A2-Name1-Name2`. 
   * since you are working with a partner, you will create a branch called `A2` **and** your development branches off `A2`
