@@ -38,6 +38,7 @@ Images from:
 Send me a Slack DM with the name of your partner by Sept 21st. No partners allowed after that date.
 
 If you are working with a partner, one partner will:
+
 * create a new project on GitLab in your personal account using the GitLab Web UI (Menu > Projects > Create new project > Create blank project).
 * Name it `520-study-A2-Name1-Name2`, where `Name1` and `Name2` are the last names of the teammates and keep its visibility as *private*. **Uncheck** "Initialize repository with a README"
 * Create the project, and copy its cloning URL
