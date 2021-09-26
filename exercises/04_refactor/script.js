@@ -10,7 +10,7 @@ function getCat() {
   let xhr = new XMLHttpRequest();
   const url = "https://cataas.com/";
   xhr.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
+    if (this.readyState === 4 && this.status === 200) {
       // callback when result is ready
       let responseText = xhr.responseText;
       let json = JSON.parse(responseText);

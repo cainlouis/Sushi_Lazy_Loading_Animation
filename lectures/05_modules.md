@@ -41,7 +41,7 @@ revealjs-url: revealjs
 ---
 
 ```js
-// utils.js
+// utils.cjs
 // we create a function 
 function double(num){
   return 2*num;
@@ -52,8 +52,8 @@ module.exports.double = double;
 // module.exports is an object that is exported
 
 
-// index.js
- const utils = require('./utils.js');  //contains the exported object
+// index.cjs
+ const utils = require('./utils.cjs');  //contains the exported object
  utils.double(4); // = 8
 ```
 
@@ -67,7 +67,9 @@ module.exports.double = double;
 
 CommonJS is not used in the browser but was and is used on the server.
 
-We will revisit with Express.js
+We will revisit with node.js
+
+Often uses the file extension `.cjs`
 
 ## Asynchronous Module Definition (AMD)
 
@@ -84,17 +86,19 @@ We will revisit with Express.js
 ---
 
 ```js
-// utils.js
+// utils.mjs
 // we create and export a function 
 export function double(num){
   return 2*num;
 }
 
 
-// index.js
-import double from './utils.js'; 
+// index.mjs
+import double from './utils.mjs'; 
 double(4); // = 8
 ```
+* often uses the file extension `.mjs`
+* see [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#aside_%E2%80%94_.mjs_versus_.js)
 
 ## `export`
 
@@ -124,7 +128,7 @@ export {name, draw };
 * `import` allows you to use features exported in another script
 
 ```js
-import {name, draw } from './modules/square.js';
+import {name, draw } from './modules/square.mjs';
 ```
 
 ---
@@ -141,7 +145,7 @@ import {name, draw } from './modules/square.js';
 * modules are deferred by default
 
 ```html
-<script type="module" src="main.js"></script>
+<script type="module" src="main.mjs"></script>
 ```
 
 ---
@@ -155,6 +159,11 @@ Aside: Your HTML code can reference multiple JS files.
 
 * they don't have to be modules
 * Each file has its own global scope.
+
+## eslint changes
+
+* eslint will not allow you to use CJS or ESM keywords unless you add a `parserOption` that your `sourceType` is a `module`.
+* I added an override for `.mjs` and `.cjs` files. Resync your `520-study` fork!
 
 ---
 
@@ -170,7 +179,7 @@ Aside: Your HTML code can reference multiple JS files.
 
 ```js
 import { name as squareName,
-         draw as drawSquare} from './modules/square.js';
+         draw as drawSquare} from './modules/square.mjs';
 ```
 or
 ```js
@@ -180,12 +189,12 @@ export { name as squareName,
 
 ## Avoiding name collisions
 
-* `name` and `draw` are common words, it is possible that they are used in other modules, not just in `square.js`
+* `name` and `draw` are common words, it is possible that they are used in other modules, not just in `square.mjs`
 * instead of declaring aliases, we can put the imported features in a Module -> like a namespace
 * use a wildcard to get all exported features
 
 ```js
-import * as Square from './modules/square.js';
+import * as Square from './modules/square.mjs';
 ```
 * `Square.name` and `Square.draw` are now available
 

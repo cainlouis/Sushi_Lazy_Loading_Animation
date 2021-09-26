@@ -11,6 +11,7 @@ assessment/04_test1_parameters.md
  exercises/03_async_await.md
  exercises/04_refactor/04_refactor.md
  exercises/04_dev_tools_forced_layout.md 
+ exercises/06_modules_lazy/06_refactor_modules_lazy.md
 
 # lectures 
 lectures/01_js_review.md
@@ -26,6 +27,7 @@ lectures/04_RAIL_model.md
 lectures/04_quiz_questions.md
 lectures/05_lazy_loading.md
 lectures/05_modules.md
+lectures/06_intro_node.md
 
 # readings
 preparation/01_prep_rendering.md
@@ -33,6 +35,7 @@ preparation/02_prep_IIFE_closure_reflow.md
 preparation/03_bottlenecks_metrics.md
 preparation/04_optimize_loading_modules.md
 preparation/05_server_side_js.md
+preparation/06_nodejs_modules.md
 
 # examples
 examples/00_homeSetup.md
