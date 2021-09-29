@@ -30,7 +30,7 @@ async function getCount() {
     let nigiriCountJson = await fetchApi(urlNigiri);
     global.countNigiri = nigiriCountJson.count;
     console.log(global.countNigiri);
-    getContent();
+    getSection();
   } catch(err) {
     treatError(err);
   }
@@ -42,18 +42,24 @@ function treatError(err) {
   console.error(err);
 }
 
-async function getContent() {
+async function getSection() {
   let parentMaki = document.querySelector("#maki");
   let makiContainer = parentMaki.querySelector(".card-container");
-  //let parentNigiri = document.querySelector(".nigiri");
-  //let nigiriContainer = parentNigiri.querySelector(".card-container");
-  for (let i = 0; i < global.countMaki; i++) {
+  let parentNigiri = document.querySelector("#nigiri");
+  let nigiriContainer = parentNigiri.querySelector(".card-container");
+  getContent(global.countMaki, "maki", makiContainer);
+  getContent(global.countNigiri, "nigiri", nigiriContainer);
+}
+
+async function getContent(count, value, container)
+{
+  for (let i = 0; i < count; i++) {
     try {
-      let endUrl = "category=maki&num=" + i;
+      let endUrl = `category=${value}&num= + ${i}`;
       let fullUrl = global.startUrl + endUrl;
-      let makiJson = await fetchApi(fullUrl);
-      let article = createArticle(makiJson);
-      makiContainer.appendChild(article);
+      let json = await fetchApi(fullUrl);
+      let article = createArticle(json);
+      container.appendChild(article);
     } catch (err) {
       treatError(err);
     }
