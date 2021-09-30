@@ -107,3 +107,36 @@ function createArticle(json) {
   //return the article
   return article;
 }
+
+//create iife so that the animation get called directly on the parsing of the js
+(function () {
+  //get the img to animate 
+  var imgAnimate = document.querySelector("#imgAnimate");
+  var offset = 0;
+  var reverse = false;
+  //request the animation
+  requestAnimationFrame(animate); 
+  
+  function animate() {
+    //translate the img according to the offset
+    imgAnimate.style.transform = "translateY(" + offset + "px)";
+    //As they have to move within 100px if offset equals 100
+    if (offset >= 100) {
+      reverse = true;
+    }
+    //if it equals 0 and thus respect the range 
+    if (offset <= 0) {
+      reverse = false;
+    }
+    //as long as reverse is not equal to 100 increment the offset
+    if (reverse === false) {
+      offset += 2;
+    }
+    //if it equals to 100 then decrement 
+    if (reverse === true) {
+      offset -= 2;
+    }
+    //call animate so it continues recursively
+    requestAnimationFrame(animate);
+  }
+})();
