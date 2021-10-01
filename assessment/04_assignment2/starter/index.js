@@ -8,11 +8,43 @@ function setup() {
   global.imgBaseUrl = "https://sonic.dawsoncollege.qc.ca/~jaya/sushi/";
   global.container = document.querySelector(".card-container");
 
-
   //event handelers for smooth scrolling
   let menu = document.querySelector("#navbar");
   menu.addEventListener("click", smothScroll);
+
   getCount();
+}
+//setup one intersection observer
+function setupIntersectionObesrver(sectionId){
+  //setup observer
+  let observer = getObserver()
+  //get images
+  let section = document.querySelector(sectionId);
+  let cardContainer = section.querySelector(".card-container");
+  let images = cardContainer.querySelectorAll("img");
+  //add images to the observer
+  for(let img of images){
+    observer.observe(img);
+  }
+}
+
+//chnage source for card images
+function displayImage(image){
+  if (image.src.endsWith("assets/sushi.webp") ){
+    image.src = image.getAttribute("data-src");
+  }
+}
+
+//function that makes the observer
+function getObserver(){
+  return new IntersectionObserver( function(entries){
+    for(let e of entries){
+      if (e.intersectionRatio > 0){
+        displayImage(e.target);
+      }
+    }
+  });
+
 }
 
 
@@ -100,6 +132,8 @@ async function getContent(count, value, container)
       treatError(err);
     }
   }
+  //handeling the lazy loding of the images in the specified section
+  setupIntersectionObesrver("#"+value);
 }
 
 function createArticle(json) {
