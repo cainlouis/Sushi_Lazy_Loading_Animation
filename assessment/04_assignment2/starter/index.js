@@ -7,6 +7,16 @@ function setup() {
   global.startUrl = "https://sonic.dawsoncollege.qc.ca/~jaya/sushi/sushi.php?";
   global.imgBaseUrl = "https://sonic.dawsoncollege.qc.ca/~jaya/sushi/";
   global.container = document.querySelector(".card-container");
+
+  //set the height of the animation section to be constant
+  let imgAnimate = document.querySelector("#imgAnimate");
+  imgAnimate.onload = function(){
+    let imgAnimate = document.querySelector("#imgAnimate");
+    let imgH = imgAnimate.height;
+    let sectionOfImg = document.querySelector("#animation");
+    sectionOfImg.style.height = imgH  + 150 + "px";
+  }
+
   getCount();
 }
 
