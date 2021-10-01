@@ -9,10 +9,9 @@ function setup() {
   global.container = document.querySelector(".card-container");
 
   //set the height of the animation section to be constant
-  let imgAnimate = document.querySelector("#imgAnimate");
+  global.imgAnimate = document.querySelector("#imgAnimate");
   imgAnimate.onload = function(){
-    let imgAnimate = document.querySelector("#imgAnimate");
-    let imgH = imgAnimate.height;
+    let imgH = global.imgAnimate.height;
     let sectionOfImg = document.querySelector("#animation");
     sectionOfImg.style.height = imgH  + 150 + "px";
   }
