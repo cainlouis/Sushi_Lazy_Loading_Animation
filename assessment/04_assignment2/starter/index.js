@@ -20,7 +20,37 @@ function setup() {
   let menu = document.querySelector("#navbar");
   menu.addEventListener("click", smothScroll);
 
+  setupIntersectionObesrver("#nigiri");
   getCount();
+}
+//setup one intersection observer
+function setupIntersectionObesrver(sectionId){
+  //setup observer
+  let observer = new IntersectionObserver( function(entries){ 
+    console.log("before loop in oberver");
+    for(let e in entries){
+      if (e.intersectionRatio > 0){
+        console.log(img);
+        displayImage(e.target);
+      }
+    }
+  });
+
+  let section = document.querySelector(sectionId);
+  let cardContainer = section.querySelector(".card-container");
+  let images = cardContainer.querySelector("img");
+  console.log("before loop in setup");
+  for(let img in images){
+    console.log(img);
+    observer.observe(img);
+  }
+
+}
+//chnage source for card images
+function displayImage(image){
+  if (image.src.endWith("assets/sushi.webp") ){
+    image.src = image.getAttribute("data-src");
+  }
 }
 
 
