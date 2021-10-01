@@ -8,16 +8,11 @@ function setup() {
   global.imgBaseUrl = "https://sonic.dawsoncollege.qc.ca/~jaya/sushi/";
   global.container = document.querySelector(".card-container");
 
-
   //event handelers for smooth scrolling
   let menu = document.querySelector("#navbar");
   menu.addEventListener("click", smothScroll);
 
-  (async function(){
-    await getCount();
-    setupIntersectionObesrver("#nigiri"); 
-  })();
-  
+  getCount();
 }
 //setup one intersection observer
 function setupIntersectionObesrver(sectionId){
@@ -28,25 +23,23 @@ function setupIntersectionObesrver(sectionId){
   let cardContainer = section.querySelector(".card-container");
   let images = cardContainer.querySelectorAll("img");
   //add images to the observer
-  console.log(cardContainer.children);
-  for(let img in images){
-    console.log(img);
+  for(let img of images){
     observer.observe(img);
   }
 }
+
 //chnage source for card images
 function displayImage(image){
-  if (image.src.endWith("assets/sushi.webp") ){
+  if (image.src.endsWith("assets/sushi.webp") ){
     image.src = image.getAttribute("data-src");
   }
 }
+
 //function that makes the observer
 function getObserver(){
-  return new IntersectionObserver( function(entries){ 
-    console.log("before loop in oberver");
-    for(let e in entries){
+  return new IntersectionObserver( function(entries){
+    for(let e of entries){
       if (e.intersectionRatio > 0){
-        console.log(img);
         displayImage(e.target);
       }
     }
@@ -139,6 +132,8 @@ async function getContent(count, value, container)
       treatError(err);
     }
   }
+  //handeling the lazy loding of the images in the specified section
+  setupIntersectionObesrver("#"+value);
 }
 
 function createArticle(json) {
