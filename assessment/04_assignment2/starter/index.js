@@ -7,6 +7,7 @@ function setup() {
   global.startUrl = "https://sonic.dawsoncollege.qc.ca/~jaya/sushi/sushi.php?";
   global.imgBaseUrl = "https://sonic.dawsoncollege.qc.ca/~jaya/sushi/";
   global.container = document.querySelector(".card-container");
+
   getCount();
 }
 
@@ -114,6 +115,12 @@ function createArticle(json) {
   var imgAnimate = document.querySelector("#imgAnimate");
   var offset = 0;
   var reverse = false;
+  //sevtion constant height 
+  imgAnimate.onload = function(){
+    let imgH = imgAnimate.height;
+    let sectionOfImg = document.querySelector("#animation");
+    sectionOfImg.style.height = imgH  + 150 + "px";
+  }
   //request the animation
   requestAnimationFrame(animate); 
   
