@@ -14,6 +14,7 @@ function setup() {
 
   getCount();
 }
+
 //setup one intersection observer
 function setupIntersectionObesrver(sectionId){
   //setup observer
@@ -44,9 +45,7 @@ function getObserver(){
       }
     }
   });
-
 }
-
 
 //function for smooth scrolling
 function smothScroll(evt){
@@ -114,8 +113,7 @@ async function getSection() {
 }
 
 //get the content of the url built and add it to the container received as input
-async function getContent(count, value, container)
-{
+async function getContent(count, value, container) {
   //for the number of sushi for the section(value)
   for (let i = 0; i < count; i++) {
     try {
@@ -133,7 +131,7 @@ async function getContent(count, value, container)
     }
   }
   //handeling the lazy loding of the images in the specified section
-  setupIntersectionObesrver("#"+value);
+  setupIntersectionObesrver("#" + value);
 }
 
 function createArticle(json) {
