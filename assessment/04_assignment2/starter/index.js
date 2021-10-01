@@ -8,7 +8,27 @@ function setup() {
   global.imgBaseUrl = "https://sonic.dawsoncollege.qc.ca/~jaya/sushi/";
   global.container = document.querySelector(".card-container");
 
+
+  //event handelers for smooth scrolling
+  let menu = document.querySelector("#navbar");
+  menu.addEventListener("click", smothScroll);
   getCount();
+}
+
+
+//function for smooth scrolling
+function smothScroll(evt){
+  //prevent default and get the link
+  evt.preventDefault();
+  let a = evt.target;
+  if(a.tagName === "A"){
+    //get elem to go to
+    let sectionId = a.href.split("#")[1];
+    let elem = document.querySelector("#" + sectionId);
+    //smooth scroll
+    let options = {behavior:"smooth", block: "start", inline: "nearest"}
+    elem.scrollIntoView(options);
+  }
 }
 
 //fetch the json from the url in input
@@ -115,7 +135,7 @@ function createArticle(json) {
   var imgAnimate = document.querySelector("#imgAnimate");
   var offset = 0;
   var reverse = false;
-  //sevtion constant height 
+  //set the height of the animation section to be constant
   imgAnimate.onload = function(){
     let imgH = imgAnimate.height;
     let sectionOfImg = document.querySelector("#animation");
