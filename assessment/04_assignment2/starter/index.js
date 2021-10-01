@@ -20,13 +20,36 @@ function setup() {
   let menu = document.querySelector("#navbar");
   menu.addEventListener("click", smothScroll);
 
-  setupIntersectionObesrver("#nigiri");
-  getCount();
+  (async function(){
+    await getCount();
+    setupIntersectionObesrver("#nigiri"); 
+  })();
+  
 }
 //setup one intersection observer
 function setupIntersectionObesrver(sectionId){
   //setup observer
-  let observer = new IntersectionObserver( function(entries){ 
+  let observer = getObserver()
+  //get images
+  let section = document.querySelector(sectionId);
+  let cardContainer = section.querySelector(".card-container");
+  let images = cardContainer.querySelectorAll("img");
+  //add images to the observer
+  console.log(cardContainer.children);
+  for(let img in images){
+    console.log(img);
+    observer.observe(img);
+  }
+}
+//chnage source for card images
+function displayImage(image){
+  if (image.src.endWith("assets/sushi.webp") ){
+    image.src = image.getAttribute("data-src");
+  }
+}
+//function that makes the observer
+function getObserver(){
+  return new IntersectionObserver( function(entries){ 
     console.log("before loop in oberver");
     for(let e in entries){
       if (e.intersectionRatio > 0){
@@ -35,22 +58,6 @@ function setupIntersectionObesrver(sectionId){
       }
     }
   });
-
-  let section = document.querySelector(sectionId);
-  let cardContainer = section.querySelector(".card-container");
-  let images = cardContainer.querySelector("img");
-  console.log("before loop in setup");
-  for(let img in images){
-    console.log(img);
-    observer.observe(img);
-  }
-
-}
-//chnage source for card images
-function displayImage(image){
-  if (image.src.endWith("assets/sushi.webp") ){
-    image.src = image.getAttribute("data-src");
-  }
 }
 
 
